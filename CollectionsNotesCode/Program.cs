@@ -8,7 +8,9 @@ namespace CollectionsNotesCode
         {
             ArrayInstantiation();
             JaggedArrays();
+            MultidimensionalArrays());
 
+            System.Threading.Thread.Sleep(10000);
         }
 
         public static void JaggedArrays()
@@ -39,8 +41,6 @@ namespace CollectionsNotesCode
                 }
             }
             System.Console.WriteLine();
-
-            System.Threading.Thread.Sleep(10000);
         }
 
         private static void ArrayInstantiation()
@@ -77,7 +77,7 @@ namespace CollectionsNotesCode
             return multiplicationTable;
         }
 
-        public static void MultidimensionalArrays()
+        public static Cell[,] MultidimensionalArrays()
         {
             Cell[,] sheet = new Cell[100, 10]; //single array or 1000 items, organized into dimensions one for rows and one for columns
             //sheet.length //1000
@@ -85,7 +85,7 @@ namespace CollectionsNotesCode
 
             for (int rowIndex = 0; rowIndex < sheet.GetLength(0); rowIndex++)
             {
-                for(int colIndex = 0; colIndex < sheet.Length(1); colIndex++)
+                for(int colIndex = 0; colIndex < sheet.GetLength(1); colIndex++)
                 {
                     sheet[rowIndex, colIndex] = new Cell();
                 }
@@ -93,11 +93,12 @@ namespace CollectionsNotesCode
             //sheet[2,3] //Cell
             int[,] matrix = new int[5, 5];
             //matrix[2,3] //0
-
             
             Cell[][][] sheet3D = new Cell[100][][]; //three dimensional array
             //needs three nested for loops to fill in
             int[,,] threeDimMatrix = new int[5, 5, 5];
+
+            return sheet;
         }
     }
 }
