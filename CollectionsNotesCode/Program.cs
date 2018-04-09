@@ -1,14 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CollectionsNotesCode
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
+        {
+            ArrayInstantiation();
+            JaggedArrays();
+
+        }
+
+        public static void JaggedArrays()
+        {
+            Cell[][] sheet = new Cell[100][];    //array of cell arrays = sheet
+
+            Console.WriteLine(sheet);
+
+            sheet[0] = new Cell[10];
+
+            Console.WriteLine(sheet);
+
+            for(int rowIndex = 0; rowIndex < sheet.Length; rowIndex++)
+            {
+                sheet[rowIndex] = new Cell[10]; //create a row of 10 cells
+
+                for(int colIndex = 0; colIndex < sheet[rowIndex].Length; colIndex++)
+                {
+                    sheet[rowIndex][colIndex] = new Cell();
+                }
+            }
+
+            foreach (Cell[] row in sheet)
+            {
+                foreach (Cell Cell in row)
+                {
+                    System.Console.Write(Cell);
+                }
+            }
+            System.Console.WriteLine();
+
+            System.Threading.Thread.Sleep(10000);
+        }
+
+        private static void ArrayInstantiation()
         {
             int[] lockCombination = new int[3];
             Console.WriteLine(lockCombination);
@@ -21,6 +56,13 @@ namespace CollectionsNotesCode
             Console.WriteLine(last);
 
             lockCombination3[2] = 20;
+            Console.WriteLine(lockCombination3);
+
+            Console.ReadLine();
         }
+
+
     }
+
+    
 }
