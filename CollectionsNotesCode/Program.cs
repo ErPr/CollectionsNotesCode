@@ -60,9 +60,24 @@ namespace CollectionsNotesCode
 
             Console.ReadLine();
         }
-
-
     }
 
-    
+    public static class MathHelpers
+    {
+        public static int[][] BuildMultiplicationTable(int maxFactor)
+        {
+            int[][] multiplicationTable = new int[maxFactor][];
+
+            for (int rowIndex = 0; rowIndex <= maxFactor; rowIndex++)
+            {
+                multiplicationTable[rowIndex] = new int[maxFactor];
+
+                for (int colIndex = 0; colIndex <= maxFactor; colIndex++)
+                {
+                    multiplicationTable[rowIndex][colIndex] = rowIndex * colIndex;
+                }
+            }
+            return multiplicationTable;
+        }
+    }
 }
