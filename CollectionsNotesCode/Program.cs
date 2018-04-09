@@ -21,11 +21,11 @@ namespace CollectionsNotesCode
 
             Console.WriteLine(sheet);
 
-            for(int rowIndex = 0; rowIndex < sheet.Length; rowIndex++)
+            for (int rowIndex = 0; rowIndex < sheet.Length; rowIndex++)
             {
                 sheet[rowIndex] = new Cell[10]; //create a row of 10 cells
 
-                for(int colIndex = 0; colIndex < sheet[rowIndex].Length; colIndex++)
+                for (int colIndex = 0; colIndex < sheet[rowIndex].Length; colIndex++)
                 {
                     sheet[rowIndex][colIndex] = new Cell();
                 }
@@ -60,10 +60,7 @@ namespace CollectionsNotesCode
 
             Console.ReadLine();
         }
-    }
 
-    public static class MathHelpers
-    {
         public static int[][] BuildMultiplicationTable(int maxFactor)
         {
             int[][] multiplicationTable = new int[maxFactor][];
@@ -78,6 +75,29 @@ namespace CollectionsNotesCode
                 }
             }
             return multiplicationTable;
+        }
+
+        public static void MultidimensionalArrays()
+        {
+            Cell[,] sheet = new Cell[100, 10]; //single array or 1000 items, organized into dimensions one for rows and one for columns
+            //sheet.length //1000
+            //sheet[0,0]   //null
+
+            for (int rowIndex = 0; rowIndex < sheet.GetLength(0); rowIndex++)
+            {
+                for(int colIndex = 0; colIndex < sheet.Length(1); colIndex++)
+                {
+                    sheet[rowIndex, colIndex] = new Cell();
+                }
+            }
+            //sheet[2,3] //Cell
+            int[,] matrix = new int[5, 5];
+            //matrix[2,3] //0
+
+            
+            Cell[][][] sheet3D = new Cell[100][][]; //three dimensional array
+            //needs three nested for loops to fill in
+            int[,,] threeDimMatrix = new int[5, 5, 5];
         }
     }
 }
