@@ -85,7 +85,7 @@ namespace CollectionsNotesCode
 
             for (int rowIndex = 0; rowIndex < sheet.GetLength(0); rowIndex++)
             {
-                for(int colIndex = 0; colIndex < sheet.GetLength(1); colIndex++)
+                for (int colIndex = 0; colIndex < sheet.GetLength(1); colIndex++)
                 {
                     sheet[rowIndex, colIndex] = new Cell();
                 }
@@ -93,12 +93,81 @@ namespace CollectionsNotesCode
             //sheet[2,3] //Cell
             int[,] matrix = new int[5, 5];
             //matrix[2,3] //0
-            
+
             Cell[][][] sheet3D = new Cell[100][][]; //three dimensional array
             //needs three nested for loops to fill in
             int[,,] threeDimMatrix = new int[5, 5, 5];
 
             return sheet;
         }
+
+        public static int[,] MulitplicationTable(int maxFactor)
+        {
+            //***  Additional notes below  ***//
+            var maxFactorPlusOne = maxFactor + 1;
+
+            int[,] table = new int[maxFactorPlusOne, maxFactorPlusOne];
+
+            for (int row = 0; row < maxFactorPlusOne; row++)
+            {
+                for (int column = 0; column < maxFactorPlusOne; column++)
+                {
+                    table[row, column] = row * column;
+                }
+            }
+            return table;
+        }
+    }
+
+}
+
+
     }
 }
+
+// notes //
+//class Program
+//{
+//    static void Main(string[] args)
+//    {
+//        Console.WriteLine("Press <Enter> to begin.");
+//        Console.ReadLine();
+
+//        int maxFactor = 3;
+
+//        var multiplicationTable = BuildMultiplicationTable(maxFactor);
+//        for (int row = 0; row < multiplicationTable.GetLength(0); row++)
+//        {
+//            for (int column = 0; column < multiplicationTable.GetLength(1); column++)
+//            {
+//                Console.Write(multiplicationTable[row, column] + " ");
+//            }
+//            Console.WriteLine();
+//        }
+
+//        Console.WriteLine("Press <Enter> to exit.");
+//        Console.ReadLine();
+//    }
+
+//    public static int[,] BuildMultiplicationTable(int maxFactor)
+//    {
+//        //Since we know that we need to include zero, assuming maxFactor = 3, our rows and
+//        //columns will go from 0 to 3. So, they will both have a length of 4 (0 1 2 3).
+//        //So, we always need to add one to maxFactor to account for zero.
+//        var maxFactorPlusOne = maxFactor + 1;
+
+//        //Declare a (2-dimensional) multidimensional array with the right amount of rows and columns.
+//        int[,] multiplicationTable = new int[maxFactorPlusOne, maxFactorPlusOne];
+
+//        //The outer loop will iterate the rows (0 1 2 3).
+//        for (int row = 0; row < maxFactorPlusOne; row++)
+//        {
+//            //The inner loop will iterate the columns (0 1 2 3).
+//            for (int column = 0; column < maxFactorPlusOne; column++)
+//            {
+//                multiplicationTable[row, column] = row * column;
+//            }
+//        }
+//        return multiplicationTable;
+//    }
+//}
