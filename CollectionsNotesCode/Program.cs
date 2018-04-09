@@ -117,6 +117,20 @@ namespace CollectionsNotesCode
             }
             return table;
         }
+
+        public static void ArrayNotes()
+        {
+            int[] ages = { 24, 31, 56 };
+
+            ages[ages.Length] = 64;
+
+            int[] agesCopy = new int[4];
+
+            ages.CopyTo(agesCopy, 1);
+
+            //agesCopy // { 0, 24, 31, 56 }
+
+        }
     }
 
 }
