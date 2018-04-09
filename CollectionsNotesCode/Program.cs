@@ -8,7 +8,7 @@ namespace CollectionsNotesCode
         {
             ArrayInstantiation();
             JaggedArrays();
-            MultidimensionalArrays());
+            MultidimensionalArrays();
 
             System.Threading.Thread.Sleep(10000);
         }
@@ -135,9 +135,6 @@ namespace CollectionsNotesCode
 
 }
 
-
-    }
-}
 
 // notes //
 //class Program
