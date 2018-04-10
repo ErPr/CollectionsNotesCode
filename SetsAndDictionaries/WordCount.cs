@@ -2,7 +2,7 @@
 
 namespace SetsAndDictionaries
 {
-    public class LexicalAnalysis
+    public class WordCount
     {
         public Dictionary<string, int> WordCount = new Dictionary<string, int>();
 
@@ -18,6 +18,20 @@ namespace SetsAndDictionaries
                 WordCount.Add(word, 1);
             }
 
+        }
+
+        public Dictionary<string, int> WordsWithCountGreaterThan(int count)
+        {
+            Dictionary<string, int> countDictionary = new Dictionary<string, int>();
+
+            foreach (KeyValuePair<string, int> pair in WordCount)
+            {
+                if (pair.Value > count)
+                {
+                    countDictionary.Add(pair.Key, pair.Value);
+                }
+            }
+            return countDictionary;
         }
     }
 }
