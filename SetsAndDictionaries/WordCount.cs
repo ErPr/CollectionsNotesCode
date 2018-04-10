@@ -2,7 +2,7 @@
 
 namespace SetsAndDictionaries
 {
-    public class WordCount
+    public class LexicalAnalysis
     {
         public Dictionary<string, int> WordCount = new Dictionary<string, int>();
 
