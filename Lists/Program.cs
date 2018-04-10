@@ -14,9 +14,32 @@ namespace Lists
                 new Student() { Name = "Sally", GradeLevel = 2 },
             };
 
-            students.Sort();
+            //students.Sort();
+            //Student newStudent = new Student() { Name = "Joe", GradeLevel = 2 };
 
-            foreach(Student student in students)
+            //int index = students.BinarySearch(newStudent);
+
+            //if(index < 0)
+            //{
+            //    //students.Insert((-index), newStudent);
+            //    students.Insert(~index, newStudent);  // bitwise operator
+            //}
+
+            SchoolRoll schoolRoll = new SchoolRoll();
+            schoolRoll.AddStudents(students);
+
+            schoolRoll.Students.RemoveAt(0);
+            schoolRoll.Students.Sort();  //Could cause problems
+
+            schoolRoll.Students.AddRange(students);  //This is dangerous because there might have been some reason why we wanted clients of our SchoolRoll class to use the AddStudents method
+                                                     //instead of adding them directly to the list like this.
+                                                     //Perhaps the AddStudents method had checked that duplicate students weren't being added to the rolls.
+                                                     //By allowing this type of write access to the student list directly via the student property.
+                                                     //We've created an opportunity for clients of the SchoolRoll class to introduce bugs.
+                                                     // interface: we only want clients of our schoolroll class to loop through studnets  ==  use IEnumerable, it doen'st expose methods to alter list, makes it read only
+                                                     
+            foreach ( Student student in schoolRoll.Students)
+            //foreach (Student student in students)
             {
                 Console.WriteLine($"{student.Name} is in grade {student.GradeLevel}");
             }
@@ -139,6 +162,35 @@ namespace Lists
 
             return result;
         }
+    }
+
+    public class SchoolRoll
+    {
+        private List<Student> _students = new List<Student>();
+
+        public IEnumerable<Student> Students { get { return _students; } }  //make it virtually read only
+
+        //public void AddStudents(List<Student> students)
+        public void AddStudents(IEnumerable<Student> students)
+        {
+            _students.AddRange(students);
+        }
+    }
+
+    //challenge
+    public class FitnessRecord
+    {
+        private List<ActivityEntry> _entries = new List<ActivityEntry>();
+
+        //public List<ActivityEntry> Entries { get { return _entries; } }
+        public IReadOnlyList<ActivityEntry> Entries { get { return _entries; } }
+    }
+
+    public class ActivityEntry
+    {
+        public string Name { get; set; }
+        public DateTime Started { get; set; }
+        public DateTime Finished { get; set; }
     }
 
 }
