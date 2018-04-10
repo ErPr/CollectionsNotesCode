@@ -28,22 +28,22 @@ namespace Lists
             SchoolRoll schoolRoll = new SchoolRoll();
             schoolRoll.AddStudents(students);
 
-            schoolRoll.Students.RemoveAt(0);
-            schoolRoll.Students.Sort();  //Could cause problems
+            //schoolRoll.Students.RemoveAt(0);
+            //.Students.Sort();  //Could cause problems
 
-            schoolRoll.Students.AddRange(students);  //This is dangerous because there might have been some reason why we wanted clients of our SchoolRoll class to use the AddStudents method
+            //schoolRoll.Students.AddRange(students);  //This is dangerous because there might have been some reason why we wanted clients of our SchoolRoll class to use the AddStudents method
                                                      //instead of adding them directly to the list like this.
                                                      //Perhaps the AddStudents method had checked that duplicate students weren't being added to the rolls.
                                                      //By allowing this type of write access to the student list directly via the student property.
                                                      //We've created an opportunity for clients of the SchoolRoll class to introduce bugs.
                                                      // interface: we only want clients of our schoolroll class to loop through studnets  ==  use IEnumerable, it doen'st expose methods to alter list, makes it read only
-                                                     
-            foreach ( Student student in schoolRoll.Students)
+
+            foreach (Student student in schoolRoll.Students)
             //foreach (Student student in students)
             {
                 Console.WriteLine($"{student.Name} is in grade {student.GradeLevel}");
             }
-                Console.ReadLine();
+            Console.ReadLine();
         }
 
         public static void Notes()
@@ -154,8 +154,8 @@ namespace Lists
         public int CompareTo(Student that)
         {
             int result = this.Name.CompareTo(that.Name);
-            
-            if(result == 0)
+
+            if (result == 0)
             {
                 result = this.GradeLevel.CompareTo(that.GradeLevel);
             }
