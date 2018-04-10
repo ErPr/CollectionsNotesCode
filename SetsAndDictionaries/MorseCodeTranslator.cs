@@ -70,5 +70,25 @@ namespace SetsAndDictionaries
             {'Ü', "..--"}
         };
 
+        public static string ToMorse(string input)
+        {
+            List<string> output = new List<string>(input.Length);
+
+            foreach(char character in input.ToUpper())
+            {
+                try
+                {
+                    string morseCode = _textToMorse[character];
+                    output.Add(morseCode);
+                }
+                catch(KeyNotFoundException)
+                {
+                    output.Add("!");
+                }
+            }
+
+            return string.Join(" ", output);
+        }
+
     }
 }
