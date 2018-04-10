@@ -7,6 +7,24 @@ namespace Lists
     {
         static void Main(string[] args)
         {
+            List<Student> students = new List<Student>
+            {
+                new Student() { Name = "Sally", GradeLevel = 3 },
+                new Student() { Name = "Bob", GradeLevel = 3 },
+                new Student() { Name = "Sally", GradeLevel = 2 },
+            };
+
+            students.Sort();
+
+            foreach(Student student in students)
+            {
+                Console.WriteLine($"{student.Name} is in grade {student.GradeLevel}");
+            }
+                Console.ReadLine();
+        }
+
+        public static void Notes()
+        {
 
             //List<string> students = new List<string>();
             //students.Add("Sue");
@@ -90,13 +108,10 @@ namespace Lists
 
             return powers;
         }
-
-
     }
 
-    public class SortingLists
+    class SortingLists
     {
-
         public static void Notes()
         {
             List<string> students = new List<string>() { "Sue", "Frank", "Allen", "Beth", "Mary" };
@@ -107,5 +122,24 @@ namespace Lists
 
         }
     }
+
+    public class Student : System.IComparable<Student> //type parameter, specifies that a Student can be copared to type Student
+    {
+        public string Name { get; set; }
+        public int GradeLevel { get; set; }
+
+        public int CompareTo(Student that)
+        {
+            int result = this.Name.CompareTo(that.Name);
+            
+            if(result == 0)
+            {
+                result = this.GradeLevel.CompareTo(that.GradeLevel);
+            }
+
+            return result;
+        }
+    }
+
 }
 
